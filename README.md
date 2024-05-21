@@ -1,24 +1,8 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is the application for flash cards. You can use it to learn new things more productive. I wish it will help you! 
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+To run this app, you need to follow of the following steps:
+* ``bundle instal``
+* ``rails db:migrate``
+* ``rails server``
