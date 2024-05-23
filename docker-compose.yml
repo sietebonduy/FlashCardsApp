@@ -1,0 +1,43 @@
+version: '3'
+services:
+  db:
+    hostname: postgres
+    build:
+      context: .
+      dockerfile: dev_db.dockerfile
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: db-primary
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    restart: always
+    ports:
+      - "55000:5432"
+    container_name: db
+    networks:
+      - app-network
+  webapp:
+    hostname: webapp
+    build:
+      context: .
+      dockerfile: dev_ruby.dockerfile
+    ports:
+      - "32000:80"
+    restart: always
+    depends_on:
+      - db
+    environment:
+      DATABASE_HOST: db
+      DATABASE_USER: postgres
+      DATABASE_PASSWORD: password
+      DATABASE_NAME: db-primary
+    networks:
+      - app-network
+    container_name: web-app
+
+volumes:
+  db-data:
+
+networks:
+  app-network:
