@@ -30,6 +30,14 @@ COPY --chown=app:app ./ /home/app/webapp
 ENV HOME /home/app/webapp
 WORKDIR $HOME/
 COPY Gemfile* $HOME/
+
+# install node, yarn, webpack
+RUN curl -L https://raw.githubusercontent.com/tj/n/master/bin/n -o n
+RUN bash n lts
+RUN npm install -g n
+RUN n 14.19.0
+RUN npm install --global yarn@1.22.4 webpack
+
 # При создании образа будут предупреждения о запуске bundler от имени root. Отключаем.
 RUN bundle config --global silence_root_warning 1
 RUN bash -lc 'bundle install'
