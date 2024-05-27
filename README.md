@@ -2,9 +2,9 @@
 
 This is the application for flash cards. You can use it to learn new things more productive. I wish it will help you! 
 
-To run this app, you need to follow of the following steps:
-* ``docker-compose down``
-* ``docker-compose up --build``
+To run this app, you need to follow of the following steps from root directory:
+* ``sudo chmod 777 ./dev.sh``
+* ``./dev.sh``
 
 ### Правило именование веток и коммитов 
 
