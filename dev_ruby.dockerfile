@@ -56,3 +56,10 @@ ENV DATABASE_NAME=db-primary
 RUN RAILS_ENV=development bundle exec rake assets:precompile
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+# Add the entrypoint script
+COPY entrypoint.sh /usr/bin/entrypoint.sh
+RUN chmod +x /usr/bin/entrypoint.sh
+
+# Use the entrypoint script
+ENTRYPOINT ["/usr/bin/entrypoint.sh"]
